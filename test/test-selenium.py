@@ -7,7 +7,7 @@ import time
 
 # %%
 # Open Chrome
-driver = webdriver.Chrome('C:/Users/matte/Downloads/chromedriver_win32/chromedriver.exe')
+driver = webdriver.Chrome('/Users/matte/Downloads/chromedriver')
 
 # Open the website
 driver.get("https://www.cilsfirst.com/")
@@ -94,7 +94,7 @@ funding_source = driver.find_element_by_xpath('//*[@id="in_127"]').send_keys(tes
 time.sleep(.25)
 # %% 
 # Enter social worker's note in text box
-staff_comments = driver.find_element_by_xpath('//*[@id="in_132"]').send_keys(test_record['staff_coments'])
+staff_comments = driver.find_element_by_xpath('//*[@id="in_132"]').send_keys(test_record['staff_comments'])
 time.sleep(.25)
 
 # %%
