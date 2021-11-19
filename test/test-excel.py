@@ -10,7 +10,7 @@ from openpyxl import Workbook, load_workbook
 wb = load_workbook('test_template.xlsx')
 #print(wb.sheetnames)
 
-# %%
+# %%xs
 sh = wb['individual_services']
 row_count = sh.max_row
 #print(row_count)
@@ -73,12 +73,19 @@ time.sleep(2)
 add_new_path = driver.find_element_by_xpath('//*[@id="content_div"]/div[2]/table/tbody/tr[4]/td/a').click()
 
 # %%
+# remove '0' from 09:00, 07:00 etc --> 9:00, 7:00
+def fix_time(time):
+    if time[0] != '1':
+        return time[1:]
+    else:
+        return time
+
 for data in datas:
     name = data[0]
     date = data[1]
     hours = data[2]
-    time_begun = data[3]
-    time_ended = data[4]
+    time_begun = fix_time(data[3])
+    time_ended = fix_time(data[4])
     service = data[5].strip()
     priority_area = data[6].strip()
     funding = data[7].strip()
