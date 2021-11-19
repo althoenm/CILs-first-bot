@@ -1,3 +1,4 @@
 # TODO create venv
 
+openpyxl==3.0.9
 selenium==3.141.0
