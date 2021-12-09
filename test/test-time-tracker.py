@@ -70,16 +70,6 @@ time.sleep(2)
 
 
 # %%
-# remove '0' from 09:00, 07:00 etc --> 9:00, 7:00
-# Convert datetime.time formats
-def fix_time(time):
-    t = time
-    t = str(t.strftime("%H:%M"))
-    if t[0] != '1':
-        return t[1:]
-    else:
-        return t
-    
 def fix_date(date):
     d = date
     d = str(d.strftime('%m/%d/%Y'))
@@ -88,8 +78,8 @@ def fix_date(date):
 
 for i in range(len(datas)):
     date = fix_date(datas[i][0])
-    time_begun = fix_time(datas[i][1])
-    time_ended = fix_time(datas[i][2])
+    time_begun = str(datas[i][1])
+    time_ended = str(datas[i][2])
     projects = datas[i][3].strip()
     funding_source = datas[i][4]
     note = datas[i][5]
