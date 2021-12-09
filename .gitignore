@@ -79,7 +79,7 @@ target/
 
 # spreadsheets/csvs
 *.csv
-*.elsx
+*.xlsx
 
 # IPython
 profile_default/
