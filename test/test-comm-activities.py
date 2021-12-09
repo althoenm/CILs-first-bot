@@ -8,7 +8,7 @@ from openpyxl import Workbook, load_workbook
 
 # %%
 # access sheet names
-wb = load_workbook('test_template.xlsx')
+wb = load_workbook('Week of 11-29 1.xlsx')
 #print(wb.sheetnames)
 
 # %%
@@ -32,6 +32,8 @@ for i in range(1, len(sheet_cells)):
     datas.append(sheet_cells[i])
 
 print(datas)
+for i in range(len(datas)):
+    print(i)
 # %%
 # Open Chrome
 driver = webdriver.Chrome('/Users/matte/Downloads/chromedriver')
@@ -85,10 +87,10 @@ def fix_date(date):
     d = str(d.strftime('%m/%d/%Y'))
     return d
 
-
+# %%
 for i in range(len(datas)):
     date = fix_date(datas[i][0])
-    hours = datas[i][1]
+    hours = str(datas[i][1])
     time_begun = fix_time(datas[i][2])
     time_ended = fix_time(datas[i][3])
     issue_area = datas[i][4].strip()
