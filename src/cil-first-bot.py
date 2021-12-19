@@ -1,23 +1,19 @@
-# %%
-from openpyxl import Workbook, load_workbook
+from openpyxl import load_workbook
 from utils import *
-from test.secrets import username, password
+from secrets import username, password
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-# %%
 # access sheet names
 wb = load_workbook('reporting_template.xlsx')
 
-# %%
 # Load worksheets by name
 tt_sh = wb['time_tracker']
 ca_sh = wb['community_activities']
 
-# %%
 # Load rows to lists
 tt_rows = []
 ca_rows =[]
@@ -25,7 +21,7 @@ read_excel_rows_to_list(tt_sh, tt_rows)
 read_excel_rows_to_list(ca_sh, ca_rows)
 tt_cells = remove_empty_rows(tt_rows)
 ca_cells = remove_empty_rows(ca_rows)
-# %%
+
 # Create list of tuples. Each tuple corresponds to one row, skipping headers. 
 tt_data = []
 ca_data = []
@@ -34,7 +30,6 @@ for i in range(1, len(tt_cells)):
 for i in range(1, len(ca_cells)):
     ca_data.append(ca_cells[i])
 
-# %%
 if __name__ == "__main__":
     # Open Chrome
     driver = webdriver.Chrome('/Users/matte/Downloads/chromedriver')
