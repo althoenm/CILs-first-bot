@@ -8,7 +8,7 @@ from openpyxl import Workbook, load_workbook
 
 # %%
 # access sheet names
-wb = load_workbook('Week of 11-29 1.xlsx')
+wb = load_workbook('week_12-3.xlsx')
 #print(wb.sheetnames)
 
 # %%
@@ -73,22 +73,23 @@ time.sleep(2)
 
 # %%
     
-def fix_date(date):
-    d = date
-    d = str(d.strftime('%m/%d/%Y'))
-    return d
+# def fix_date(date):
+#     d = date
+#     d = str(d.strftime('%m/%d/%Y'))
+#     return d
 
 # %%
 for i in range(len(datas)):
-    date = fix_date(datas[i][0])
+    date = str(datas[i][0])
     hours = str(datas[i][1])
     time_begun = str(datas[i][2])
     time_ended = str(datas[i][3])
     issue_area = datas[i][4].strip()
     projects = datas[i][5].strip()
     service_program = datas[i][6].strip()
-    funding_source = datas[i][7]
-    note = datas[i][8]
+    priority_area = datas[i][7]
+    funding_source = datas[i][8]
+    note = datas[i][9]
 
     if i == 0:
         # Find the Community Activities button and click it
@@ -125,6 +126,9 @@ for i in range(len(datas)):
         # service program dropdown
         service_program = driver.find_element_by_xpath('//*[@id="in_248"]').send_keys(service_program)
         time.sleep(.25)
+
+        # priority area dropdown
+        priority_area = driver.find_element_by_xpath('//*[@id="in_338"]').send_keys(priority_area)
 
         # Enter funding source dropdown
         funding_source = driver.find_element_by_xpath('//*[@id="in_303"]').send_keys(funding_source)
@@ -169,6 +173,9 @@ for i in range(len(datas)):
         # service program dropdown
         service_program = driver.find_element_by_xpath('//*[@id="in_248"]').send_keys(service_program)
         time.sleep(.25)
+
+        # priority area dropdown
+        priority_area = driver.find_element_by_xpath('//*[@id="in_338"]').send_keys(priority_area)
 
         # Enter funding source dropdown
         funding_source = driver.find_element_by_xpath('//*[@id="in_303"]').send_keys(funding_source)

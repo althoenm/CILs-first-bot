@@ -1,5 +1,4 @@
 # %%
-import datetime
 import time
 from secrets import username, password
 from selenium import webdriver
@@ -8,7 +7,7 @@ from openpyxl import Workbook, load_workbook
 
 # %%
 # access sheet names
-wb = load_workbook('Week of 11-29 1.xlsx')
+wb = load_workbook('week_12-3.xlsx')
 #print(wb.sheetnames)
 
 # %%
@@ -22,9 +21,14 @@ sheet_cells = []
 for rows in sh.iter_rows():
     row_cells = []
     for cell in rows:
-        row_cells.append(cell.value)
+        if cell.value is not None:
+            row_cells.append(cell.value)
+        else:
+            break
     sheet_cells.append(list(row_cells))
-
+    
+# Remove empty lists
+sheet_cells = [x for x in sheet_cells if x != []]
 # %%
 # Create list of tuples. Each tuple corresponds to one row, skipping headers. 
 datas = []
@@ -70,14 +74,14 @@ time.sleep(2)
 
 
 # %%
-def fix_date(date):
-    d = date
-    d = str(d.strftime('%m/%d/%Y'))
-    return d
+# def fix_date(date):
+#     d = date
+#     d = str(d.strftime('%m/%d/%Y'))
+#     return d
 
 
 for i in range(len(datas)):
-    date = fix_date(datas[i][0])
+    date = str(datas[i][0])
     time_begun = str(datas[i][1])
     time_ended = str(datas[i][2])
     projects = datas[i][3].strip()
