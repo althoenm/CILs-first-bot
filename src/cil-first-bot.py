@@ -6,9 +6,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
 # access sheet names
-wb = load_workbook('reporting_template.xlsx')
+wb = load_workbook('week_of_2-7.xlsx')
 
 # Load worksheets by name
 tt_sh = wb['time_tracker']
@@ -32,7 +33,8 @@ for i in range(1, len(ca_cells)):
 
 if __name__ == "__main__":
     # Open Chrome
-    driver = webdriver.Chrome('/Users/matte/Downloads/chromedriver')
+    #driver = webdriver.Chrome('/Users/matte/Downloads/chromedriver')
+    driver = webdriver.Chrome(ChromeDriverManager().install())
 
     # Open the website
     driver.get("https://www.cilsfirst.com/")
@@ -119,7 +121,7 @@ if __name__ == "__main__":
 
     # Open new browser instance
     # Open Chrome
-    driver = webdriver.Chrome('/Users/matte/Downloads/chromedriver')
+    driver = webdriver.Chrome(ChromeDriverManager().install())
 
     # Open the website
     driver.get("https://www.cilsfirst.com/")
