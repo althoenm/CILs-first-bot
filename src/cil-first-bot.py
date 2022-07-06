@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 # access sheet names
-wb = load_workbook('week_of_2-7.xlsx')
+wb = load_workbook('reporting_template.xlsx')
 
 # Load worksheets by name
 tt_sh = wb['time_tracker']
@@ -41,9 +41,9 @@ if __name__ == "__main__":
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/form/center/div/table/tbody/tr[3]/td/input")))
 
     # Find the username and password fields and enter the credentials
-    driver.find_element_by_xpath('/html/body/form/center/div/table/tbody/tr[1]/td[2]/input').send_keys(username)
-    driver.find_element_by_xpath('/html/body/form/center/div/table/tbody/tr[2]/td[2]/input').send_keys(password)
-    driver.find_element_by_xpath('/html/body/form/center/div/table/tbody/tr[3]/td/input').click()
+    driver.find_element("xpath", '/html/body/form/center/div/table/tbody/tr[1]/td[2]/input').send_keys(username)
+    driver.find_element("xpath", '/html/body/form/center/div/table/tbody/tr[2]/td[2]/input').send_keys(password)
+    driver.find_element("xpath", '/html/body/form/center/div/table/tbody/tr[3]/td/input').click()
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="side_8"]/a')))
 
 
@@ -64,58 +64,58 @@ if __name__ == "__main__":
         # enter first time tracker record
         if i == 0:
             # Find the time tracker button and click it
-            i_path = driver.find_element_by_xpath('//*[@id="side_8"]/a').click()
+            i_path = driver.find_element("xpath", '//*[@id="side_8"]/a').click()
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="content_div"]/div[2]/table/tbody/tr[4]/td/a')))
             
             # Find 'add new time tracker record' button and click it
-            add_new_path = driver.find_element_by_xpath('//*[@id="content_div"]/div[2]/table/tbody/tr[4]/td/a').click()
+            add_new_path = driver.find_element("xpath", '//*[@id="content_div"]/div[2]/table/tbody/tr[4]/td/a').click()
 
             # Enter date
-            contact_date = driver.find_element_by_xpath('//*[@id="in_304clone"]').send_keys(date)
+            contact_date = driver.find_element("xpath", '//*[@id="in_304clone"]').send_keys(date)
 
             # Enter time begun
-            time_begun = driver.find_element_by_xpath('//*[@id="in_308"]').send_keys(time_begun)
+            time_begun = driver.find_element("xpath", '//*[@id="in_308"]').send_keys(time_begun)
 
             # Time ended HH:MM
-            time_ended = driver.find_element_by_xpath('//*[@id="in_309"]').send_keys(time_ended)
+            time_ended = driver.find_element("xpath", '//*[@id="in_309"]').send_keys(time_ended)
 
             # Projects dropdown
-            projects = driver.find_element_by_xpath('//*[@id="in_526"]').send_keys(projects)
+            projects = driver.find_element("xpath", '//*[@id="in_526"]').send_keys(projects)
 
             # Enter funding source dropdown
-            funding_source = driver.find_element_by_xpath('//*[@id="in_313"]').send_keys(funding_source)
+            funding_source = driver.find_element("xpath", '//*[@id="in_313"]').send_keys(funding_source)
 
             # Enter social worker's note in text box
-            staff_comments = driver.find_element_by_xpath('//*[@id="in_312"]').send_keys(note)
+            staff_comments = driver.find_element("xpath", '//*[@id="in_312"]').send_keys(note)
 
             # Click save record
-            save_record = driver.find_element_by_xpath('//*[@id="sub"]').click()
+            save_record = driver.find_element("xpath", '//*[@id="sub"]').click()
         
         # enter remaining time tracker records
         else:
             # find add a new record (from 'record successfully saved') and click it
-            add_new_path = driver.find_element_by_xpath('//*[@id="data_form"]/table[1]/tbody/tr[4]/td/input[3]').click()
+            add_new_path = driver.find_element("xpath", '//*[@id="data_form"]/table[1]/tbody/tr[4]/td/input[3]').click()
 
             # Enter date
-            contact_date = driver.find_element_by_xpath('//*[@id="in_304clone"]').send_keys(date) 
+            contact_date = driver.find_element("xpath", '//*[@id="in_304clone"]').send_keys(date) 
 
             # Enter time begun
-            time_begun = driver.find_element_by_xpath('//*[@id="in_308"]').send_keys(time_begun)
+            time_begun = driver.find_element("xpath", '//*[@id="in_308"]').send_keys(time_begun)
 
             # Time ended HH:MM
-            time_ended = driver.find_element_by_xpath('//*[@id="in_309"]').send_keys(time_ended)
+            time_ended = driver.find_element("xpath", '//*[@id="in_309"]').send_keys(time_ended)
 
             # Projects dropdown
-            projects = driver.find_element_by_xpath('//*[@id="in_526"]').send_keys(projects)
+            projects = driver.find_element("xpath", '//*[@id="in_526"]').send_keys(projects)
 
             # Enter funding source dropdown
-            funding_source = driver.find_element_by_xpath('//*[@id="in_313"]').send_keys(funding_source)
+            funding_source = driver.find_element("xpath", '//*[@id="in_313"]').send_keys(funding_source)
 
             # Enter social worker's note in text box
-            staff_comments = driver.find_element_by_xpath('//*[@id="in_312"]').send_keys(note)
+            staff_comments = driver.find_element("xpath", '//*[@id="in_312"]').send_keys(note)
 
             # Click save record
-            save_record = driver.find_element_by_xpath('//*[@id="sub"]').click()
+            save_record = driver.find_element("xpath", '//*[@id="sub"]').click()
     # Close the browser
     driver.quit()
 
@@ -128,9 +128,9 @@ if __name__ == "__main__":
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/form/center/div/table/tbody/tr[3]/td/input")))
 
     # Find the username and password fields and enter the credentials
-    driver.find_element_by_xpath('/html/body/form/center/div/table/tbody/tr[1]/td[2]/input').send_keys(username)
-    driver.find_element_by_xpath('/html/body/form/center/div/table/tbody/tr[2]/td[2]/input').send_keys(password)
-    driver.find_element_by_xpath('/html/body/form/center/div/table/tbody/tr[3]/td/input').click()
+    driver.find_element("xpath", '/html/body/form/center/div/table/tbody/tr[1]/td[2]/input').send_keys(username)
+    driver.find_element("xpath", '/html/body/form/center/div/table/tbody/tr[2]/td[2]/input').send_keys(password)
+    driver.find_element("xpath", '/html/body/form/center/div/table/tbody/tr[3]/td/input').click()
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="side_8"]/a')))
 
     for i in range(len(ca_data)):
@@ -148,90 +148,90 @@ if __name__ == "__main__":
         # Enter first community activity record
         if i == 0:
             # Find the Community Activities button and click it
-            i_path = driver.find_element_by_xpath('//*[@id="side_4"]/a').click()
+            i_path = driver.find_element("xpath", '//*[@id="side_4"]/a').click()
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="content_div"]/div[2]/table/tbody/tr[4]/td/a')))
             
             # Find 'add new community activities record' button and click it
-            add_new_path = driver.find_element_by_xpath('//*[@id="content_div"]/div[2]/table/tbody/tr[4]/td/a').click()
+            add_new_path = driver.find_element("xpath", '//*[@id="content_div"]/div[2]/table/tbody/tr[4]/td/a').click()
 
             # Enter date
-            contact_date = driver.find_element_by_xpath('//*[@id="in_244clone"]').send_keys(date)
+            contact_date = driver.find_element("xpath", '//*[@id="in_244clone"]').send_keys(date)
 
             # Enter time begun
-            time_begun = driver.find_element_by_xpath('//*[@id="in_530"]').send_keys(time_begun)
+            time_begun = driver.find_element("xpath", '//*[@id="in_530"]').send_keys(time_begun)
             
 
             # Time ended HH:MM
-            time_ended = driver.find_element_by_xpath('//*[@id="in_531"]').send_keys(time_ended)
+            time_ended = driver.find_element("xpath", '//*[@id="in_531"]').send_keys(time_ended)
             
 
             # Hours (float)
-            hours = driver.find_element_by_xpath('//*[@id="in_250"]').send_keys(hours)
+            hours = driver.find_element("xpath", '//*[@id="in_250"]').send_keys(hours)
             
 
             # Issue area dropdown 
-            issue_area = driver.find_element_by_xpath('//*[@id="in_247"]').send_keys(issue_area)
+            issue_area = driver.find_element("xpath", '//*[@id="in_247"]').send_keys(issue_area)
             
 
             # Projects dropdown
-            projects = driver.find_element_by_xpath('//*[@id="in_258"]').send_keys(projects)
+            projects = driver.find_element("xpath", '//*[@id="in_258"]').send_keys(projects)
             
 
             # service program dropdown
-            service_program = driver.find_element_by_xpath('//*[@id="in_248"]').send_keys(service_program)
+            service_program = driver.find_element("xpath", '//*[@id="in_248"]').send_keys(service_program)
             
 
             # priority area dropdown
-            priority_area = driver.find_element_by_xpath('//*[@id="in_338"]').send_keys(priority_area)
+            priority_area = driver.find_element("xpath", '//*[@id="in_338"]').send_keys(priority_area)
 
             # Enter funding source dropdown
-            funding_source = driver.find_element_by_xpath('//*[@id="in_303"]').send_keys(funding_source)
+            funding_source = driver.find_element("xpath", '//*[@id="in_303"]').send_keys(funding_source)
             
 
             # Enter social worker's note in text box
-            staff_comments = driver.find_element_by_xpath('//*[@id="in_255"]').send_keys(note)
+            staff_comments = driver.find_element("xpath", '//*[@id="in_255"]').send_keys(note)
             
 
             # Click save record
-            save_record = driver.find_element_by_xpath('//*[@id="sub"]').click()
+            save_record = driver.find_element("xpath", '//*[@id="sub"]').click()
 
         # Enter remaining community activities records
         else:
             # find add a new record (from 'record successfully saved') and click it
-            add_new_path = driver.find_element_by_xpath('//*[@id="data_form"]/table[1]/tbody/tr[4]/td/input[3]').click()
+            add_new_path = driver.find_element("xpath", '//*[@id="data_form"]/table[1]/tbody/tr[4]/td/input[3]').click()
 
             # Enter date
-            contact_date = driver.find_element_by_xpath('//*[@id="in_244clone"]').send_keys(date)
+            contact_date = driver.find_element("xpath", '//*[@id="in_244clone"]').send_keys(date)
 
             # Enter time begun
-            time_begun = driver.find_element_by_xpath('//*[@id="in_530"]').send_keys(time_begun)
+            time_begun = driver.find_element("xpath", '//*[@id="in_530"]').send_keys(time_begun)
             
             # Time ended HH:MM
-            time_ended = driver.find_element_by_xpath('//*[@id="in_531"]').send_keys(time_ended)
+            time_ended = driver.find_element("xpath", '//*[@id="in_531"]').send_keys(time_ended)
     
             # Hours (float)
-            hours = driver.find_element_by_xpath('//*[@id="in_250"]').send_keys(hours)
+            hours = driver.find_element("xpath", '//*[@id="in_250"]').send_keys(hours)
 
             # Issue area dropdown 
-            issue_area = driver.find_element_by_xpath('//*[@id="in_247"]').send_keys(issue_area)
+            issue_area = driver.find_element("xpath", '//*[@id="in_247"]').send_keys(issue_area)
             
             # Projects dropdown
-            projects = driver.find_element_by_xpath('//*[@id="in_258"]').send_keys(projects)
+            projects = driver.find_element("xpath", '//*[@id="in_258"]').send_keys(projects)
             
             # service program dropdown
-            service_program = driver.find_element_by_xpath('//*[@id="in_248"]').send_keys(service_program)
+            service_program = driver.find_element("xpath", '//*[@id="in_248"]').send_keys(service_program)
             
             # priority area dropdown
-            priority_area = driver.find_element_by_xpath('//*[@id="in_338"]').send_keys(priority_area)
+            priority_area = driver.find_element("xpath", '//*[@id="in_338"]').send_keys(priority_area)
 
             # Enter funding source dropdown
-            funding_source = driver.find_element_by_xpath('//*[@id="in_303"]').send_keys(funding_source)
+            funding_source = driver.find_element("xpath", '//*[@id="in_303"]').send_keys(funding_source)
 
             # Enter social worker's note in text box
-            staff_comments = driver.find_element_by_xpath('//*[@id="in_255"]').send_keys(note)
+            staff_comments = driver.find_element("xpath", '//*[@id="in_255"]').send_keys(note)
             
             # Click save record
-            save_record = driver.find_element_by_xpath('//*[@id="sub"]').click()
+            save_record = driver.find_element("xpath", '//*[@id="sub"]').click()
     
     # Close the driver
     driver.quit()
